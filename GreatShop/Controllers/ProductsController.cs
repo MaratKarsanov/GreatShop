@@ -15,6 +15,21 @@ namespace GreatShop.Api.Controllers
             _productService = productService;
         }
 
+        // GET api/products
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            try
+            {
+                var products = await _productService.GetAllAsync();
+                return products is null ? Ok(new List<ProductDto>()) : Ok(products);
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+        }
+
         // GET api/products/{id}
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetById(Guid id)

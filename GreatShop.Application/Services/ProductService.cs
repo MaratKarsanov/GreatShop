@@ -36,6 +36,12 @@ namespace GreatShop.Application.Services
             return isDeleted;
         }
 
+        public async Task<IReadOnlyList<ProductDto>> GetAllAsync()
+        {
+            var products = await _productRepository.TryGetAllAsync();
+            return _mapper.Map<IReadOnlyList<ProductDto>>(products);
+        }
+
         public async Task<ProductDto?> TryGetByIdAsync(Guid id)
         {
             var product = await _productRepository.TryGetByIdAsync(id);

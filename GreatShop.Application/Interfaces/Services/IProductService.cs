@@ -8,5 +8,6 @@ namespace GreatShop.Application.Interfaces.Services
         Task<ProductDto> CreateAsync(CreateProductDto dto);
         Task<ProductDto?> UpdateAsync(Guid id, UpdateProductDto dto);
         Task<bool> DeleteAsync(Guid id);
+        Task<IReadOnlyList<ProductDto>> GetAllAsync();
     }
 }
